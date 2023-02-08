@@ -14,6 +14,7 @@ import HomeScreen from './src/screens/homeScreen';
 import ProfileScreen from './src/screens/profileScreen';
 import FollowersScreen from './src/screens/followersScreen';
 import FollowingScreen from './src/screens/followingScreen';
+import axios from 'axios';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ const theme = {
   },
 };
 
+axios.defaults.baseURL = 'https://api.github.com/';
 
 const App = () => {
   return (

@@ -1,31 +1,23 @@
-import { View, Text, SafeAreaView, StyleSheet} from 'react-native';
+import { View, Text, SafeAreaView} from 'react-native';
 import { TextInput } from 'react-native-paper';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import GithubLogo from '../assets/images/github-mark.svg';
+import {styles} from '../styles/styles';
 
 
-
-export default function HomeScreen() {
-  const styles = StyleSheet.create({
-    view: {
-      flex:1,
-      justifyContent:'center',
-      alignContent:'center',
-      padding:20,
-    },
-  });
+export default function HomeScreen ({navigation, route}) {
   const [username, setUsername] = useState('');
-  const [userFound, setUserFound] = useState(false);
+  const [user, setUser] = useState();
   const [userSearchExecuted, setUserSearchExecuted] = useState(false);
   const searchUser = () => {
-    axios.get('https://api.github.com/users/' + username)
+    axios.get('users/' + username)
     .then((res) => {
       if (res.data) {
         console.log(res.data);
-        setUserFound(true);
+        setUser(res.data);
       } else {
-        setUserFound(false);
+        setUser();
       }
       setUserSearchExecuted(true);
     })
@@ -38,9 +30,17 @@ export default function HomeScreen() {
   useEffect(() => {
     if (username) {
       setUserSearchExecuted(false);
-      setUserFound(false);
+      setUser();
     }
   },[username]);
+
+  useEffect(() => {
+    if (user) {
+      navigation.navigate('Profile', {
+        profile_url: user.url,
+      });
+    }
+  },[user, navigation]);
 
   return (
     <SafeAreaView style={{flex:1}}>
@@ -59,7 +59,7 @@ export default function HomeScreen() {
         }}/>}
         />
       </View>
-      {userSearchExecuted && !userFound && (
+      {userSearchExecuted && !user && (
         <View style={[styles.view, {justifyContent:'flex-start'}]}>
           <Text>User Not Found</Text>
         </View>
