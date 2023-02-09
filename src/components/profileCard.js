@@ -39,7 +39,7 @@ const ProfileCard = ({url}) => {
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View>
                 <Text>
-                  Followers <Link
+                  Followers {profileData.followers && <Link
                     to={{
                       screen: 'Followers',
                       params: {
@@ -47,12 +47,12 @@ const ProfileCard = ({url}) => {
                       },
                     }}
                     style={{textDecorationLine: 'underline'}}
-                  >{profileData.followers}</Link>
+                  >{profileData.followers}</Link>}
                 </Text>
               </View>
               <View>
                 <Text>
-                  Following <Link
+                  Following {profileData.following && <Link
                     to={{
                       screen: 'Following',
                       params: {
@@ -60,7 +60,7 @@ const ProfileCard = ({url}) => {
                       },
                     }}
                     style={{textDecorationLine: 'underline'}}
-                  >{profileData.following}</Link>
+                  >{profileData.following}</Link>}
                 </Text>
               </View>
             </View>
