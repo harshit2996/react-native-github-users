@@ -48,7 +48,6 @@ export const FollowList = ({navigation, route}) => {
       }
     })).then(res=>{
       let links = parse_link_header(res.headers.link);
-      console.log('HEADER LINKS:');
       if (links.keys().includes('next')) {
         setNext(true);
       } else {
@@ -79,7 +78,6 @@ export const FollowList = ({navigation, route}) => {
 
   useFocusEffect(
     useCallback(()=>{
-      console.log('WE ARE HERE' + route.params.profile_url);
       updateFollowUsers(currentPage);
       return () => {
         setFollowUsers(undefined);
