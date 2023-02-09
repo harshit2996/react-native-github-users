@@ -4,7 +4,6 @@
 - iOS
 - Android
 
----
 ## Screens
 The main screens / views are - 
   - Github User Search Screen
@@ -19,7 +18,7 @@ The main screens / views are -
 
   - Following Screen
     - Same as Followers Screen but with list of users, the selected (searched) user is following
----
+
 ## Components
 
 There are two main components -
@@ -42,7 +41,7 @@ There are two main components -
     The  number of users loaded per page can be changed by updating `per_page` prop of the Flatlist
 
    - Implemented Pull to Refresh in the Flatlist
----
+
 ## Packages & Libraries used 
 Here is the list of main packages & libraries used -
   - react-native-paper
@@ -50,7 +49,7 @@ Here is the list of main packages & libraries used -
   - react-native-svg
   - react-native-vector-icons
   - axios
----
+
 ## API & Endpoints
 - API base URL: - `https://api.github.com`
 - Endpoints: -
